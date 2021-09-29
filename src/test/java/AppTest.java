@@ -23,10 +23,9 @@ public class AppTest {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory( "bookShop" );
         em = emf.createEntityManager();
         HibernateUtils.setDaoEntityManager(em);
-        //em.getTransaction().begin();
     }
 
-    /*@Test
+    @Test
     public void insertAndSelectTest() {
         var author = new Author();
         author.setName("Александр Пушкин ");
@@ -61,7 +60,7 @@ public class AppTest {
         assert(selected.getAuthors().size() > 0);
         assert(selected.getGenres() != null);
         assert(selected.getGenres().size() > 0);
-    }*/
+    }
 
     @Test
     public void removeTest() {
@@ -77,9 +76,6 @@ public class AppTest {
 
     @After
     public void close() {
-        /*if (em.getTransaction().isActive()) {
-            em.getTransaction().commit();
-        }*/
         if (em.getEntityManagerFactory().isOpen()) {
             em.getEntityManagerFactory().close();
         }

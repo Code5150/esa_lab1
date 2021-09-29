@@ -22,4 +22,11 @@ public class HibernateUtils {
         BookDAO.setEm(e);
         GenreDAO.setEm(e);
     }
+
+    public static void destroyEntityManager() {
+        if (em.getEntityManagerFactory().isOpen()) {
+            em.getEntityManagerFactory().close();
+        }
+        em.close();
+    }
 }
