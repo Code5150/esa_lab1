@@ -30,6 +30,8 @@ public class BookDAO extends AbstractDAO{
     }
 
     public static void delete(Book entity) {
+        em.getTransaction().begin();
         em.remove(entity);
+        em.getTransaction().commit();
     }
 }

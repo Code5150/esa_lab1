@@ -1,6 +1,5 @@
 package com.example.esa_lab1.dao;
 
-import com.example.esa_lab1.dto.Author;
 import com.example.esa_lab1.dto.Genre;
 
 import javax.annotation.ManagedBean;
@@ -32,6 +31,8 @@ public class GenreDAO extends AbstractDAO{
     }
 
     public static void delete(Genre entity) {
+        em.getTransaction().begin();
         em.remove(entity);
+        em.getTransaction().commit();
     }
 }

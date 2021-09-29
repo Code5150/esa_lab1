@@ -26,8 +26,8 @@ public class AppTest {
         //em.getTransaction().begin();
     }
 
-    @Test
-    public void insertionTest() {
+    /*@Test
+    public void insertAndSelectTest() {
         var author = new Author();
         author.setName("Александр Пушкин ");
         author.setBio("Великий российский поэт ");
@@ -61,6 +61,18 @@ public class AppTest {
         assert(selected.getAuthors().size() > 0);
         assert(selected.getGenres() != null);
         assert(selected.getGenres().size() > 0);
+    }*/
+
+    @Test
+    public void removeTest() {
+        AuthorDAO.delete(AuthorDAO.select(UUID.fromString("fa539f43-3d13-4198-b566-34ce835cbd96")));
+    }
+
+    @Test
+    public void updateTest() {
+        var turgenev = AuthorDAO.select(UUID.fromString("20204d64-4ce9-4f42-8a9f-af97e71b403f"));
+        turgenev.setBio(turgenev.getBio() + " 19 века.");
+        AuthorDAO.update(turgenev);
     }
 
     @After

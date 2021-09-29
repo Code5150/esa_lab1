@@ -3,7 +3,6 @@ package com.example.esa_lab1.dao;
 import com.example.esa_lab1.dto.Author;
 
 import javax.annotation.ManagedBean;
-import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,12 +24,6 @@ public class AuthorDAO extends AbstractDAO{
         em.getTransaction().commit();
     }
 
-    /*public static void insertMany(Collection<Author> entities) {
-        em.getTransaction().begin();
-        em.persist(entity);
-        em.getTransaction().commit();
-    }*/
-
     public static void update(Author entity) {
         em.getTransaction().begin();
         em.merge(entity);
@@ -38,6 +31,8 @@ public class AuthorDAO extends AbstractDAO{
     }
 
     public static void delete(Author entity) {
+        em.getTransaction().begin();
         em.remove(entity);
+        em.getTransaction().commit();
     }
 }
